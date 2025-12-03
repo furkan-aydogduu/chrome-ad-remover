@@ -8,7 +8,15 @@ class SiteDonanimhaber extends Site{
 				"virgul-ad", "DH-Reklam", "reklam-kutu", "degisiklireklam", "reklamkullanicikapsam", "sagSabitReklam", "sagreklam", "yapisanreklam", "stickyAdRightSide", "div-gpt-ad"
 			],
 			["id", "class", "partial-name"],
-			["iframe"]
+			["iframe"],
+			[
+				{	"node" : "iframe",
+					"class" : "dh-player-responsive"
+				},
+				{	"node" : "iframe",
+					"src" : "youtube.com/"
+				}
+			]
 		);
 	}
 	
