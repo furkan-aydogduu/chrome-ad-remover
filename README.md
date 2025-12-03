@@ -11,6 +11,11 @@
 
 #### $\large{\textbf{\textcolor{orange}{Note:}}}$ This version of project uses BFS dom tree scanning with interval implementation to catch ads on the websites.
 
+<h4>Tested on Chrome Browser versions:</h4> 
+<ul>
+  <li>Version 143.0.7499.41 (Official Build) (64-bit)</li>
+</ul>
+
 
 You can visit the google chrome developer website below for an example extension development tutoiral:
 
