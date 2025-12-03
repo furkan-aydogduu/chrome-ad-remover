@@ -4,7 +4,7 @@ var cabEnabled = false;
 var siteContainer = [];
 var host = "";
 var curSite = undefined;
-var _cabObserver = undefined;
+var cabObserver = undefined;
 
 runExtension();
 
@@ -42,11 +42,12 @@ async function runExtension(){
 			}
 		}
 		
-		_cabObserver = new MutationObserver(removeAds);
+		cabObserver = new MutationObserver(removeAds);
 		
-		document.cabObserver = _cabObserver;
+		document.cabObserver = cabObserver;
 		
-		_cabObserver.observe(document, {
+		
+		cabObserver.observe(document, {
 		  subtree: true,
 		  childList: true,
 		  attributes: true
@@ -66,10 +67,6 @@ function removeAds(mutationRecords, observer){
 				let mutationRecord = mutationRecords[i];
 				
 				if(exists(mutationRecord) && mutationRecord instanceof MutationRecord){
-					if(observer.cabObserverId >= 1){
-						console.log(observer.cabObserverId);
-						console.log(mutationRecord);
-					}
 					
 					if(exists(mutationRecord.removedNodes)){
 						if(mutationRecord.removedNodes instanceof NodeList){
@@ -78,9 +75,8 @@ function removeAds(mutationRecords, observer){
 									if(!exists(mutationRecord.removedNodes[i].parentNode)){  //11 -> document fragment
 										if(exists(mutationRecord.removedNodes[i].cabObserver)){
 											console.log("disconnect");
+											mutationRecord.removedNodes[i].cabObserver.disconnect();
 											mutationRecord.removedNodes[i].cabObserver = undefined;
-											observer.disconnect();
-											return;
 										}
 									}
 								}
@@ -207,15 +203,7 @@ function traverseNodeAndHideAds(node, nodeCallback){
 			
 		if(exists(curNode)){
 			if(curNode instanceof Node){
-				if(exists(curNode.attributes) && exists(curNode.attributes["class"]) && curNode.attributes["class"].value.toLowerCase() === "flex flex-row" && exists(curNode.parentNode) 
-					&& exists(curNode.parentNode.attributes) && exists(curNode.parentNode.attributes["class"]) && curNode.parentNode.attributes["class"].value.toLowerCase() === "main bg-white relative"){
-						console.log("new flew div:");
-						console.log(curNode);
-						if(exists(curNode.getRootNode().cabObserver)){
-							console.log(curNode.getRootNode().cabObserver.getCABObserverId());
-						}
-						
-					}
+				
 				var anyClearOperationPerformed = 0;
 				
 				if(!isToBeExcluded(curNode)){
@@ -233,13 +221,10 @@ function traverseNodeAndHideAds(node, nodeCallback){
 					}
 					
 					if(exists(curNode.shadowRoot) && curNode.shadowRoot instanceof Node){
-						
-						//console.log(curNode.shadowRoot.cabObserver);
-						
 						if(!exists(curNode.shadowRoot.cabObserver)){
+							
 							var _observer = new MutationObserver(removeAds);
-							console.log("newObserver:" + _observer.getCABObserverId());
-							console.log(curNode);
+			
 							curNode.shadowRoot.cabObserver = _observer;
 							
 							_observer.observe(curNode.shadowRoot, {
@@ -247,7 +232,7 @@ function traverseNodeAndHideAds(node, nodeCallback){
 							  childList: true,
 							  attributes: true
 							});
-							
+
 							nodeQueue.push(curNode.shadowRoot);
 						}
 					}

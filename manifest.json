@@ -1,11 +1,13 @@
 {
 	"name": "Chrome Ad Remover v1",
-	"description": "Chrome Ad Remover",
+	"description": "Chrome Ad Remover with mutation observer",
 	"version": "1.0",
 	"manifest_version": 3,
 	"action": {
 		"default_popup": "ui/extension_ui.html",
-		"default_icon": "ui/chrome_ad_remover_v1_icon.png"
+		"default_icon": {
+			"128" : "ui/chrome_ad_remover_v1_icon.png"
+			}
 	},
 	"permissions": [
 	"storage"
