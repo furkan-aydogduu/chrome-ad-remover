@@ -1,7 +1,7 @@
 class Site {
 	
-	constructor(host, ad_identity_blacklist, ad_element_attribute_checklist, ad_element_blacklist, exclude_list){
-		this.host = host;
+	constructor(hostList, ad_identity_blacklist, ad_element_attribute_checklist, ad_element_blacklist, exclude_list){
+		this.hostList = hostList;
 		this.ad_identity_blacklist = ad_identity_blacklist;
 		this.ad_element_attribute_checklist = ad_element_attribute_checklist;
 		this.ad_element_blacklist = ad_element_blacklist;

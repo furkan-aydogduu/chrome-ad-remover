@@ -2,7 +2,7 @@ class SiteOnedio extends Site{
 	
 	constructor(){
 		super(
-			"onedio.com", 
+			["onedio.com"], 
 			[
 			"icerikyanispontop-container", "icerikyanitop-container", "kategoriyanitop","gpt-desktop-icerik", "gpt-desktop-kategori", "google_ads_iframe", "article__oads", 
 			"type-e", "type-w", "teads", "mdznads", "philips-popup", "onedio-ps-container", "qnb-zeka-q-mh", "okey", "yuzdeyuzmuzik-main-container", "zergo", "gpt-ad-", 

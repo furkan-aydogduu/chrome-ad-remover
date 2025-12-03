@@ -1,11 +1,13 @@
 {
-	"name": "Chrome Ad Remover v1",
-	"description": "Chrome Ad Remover",
-	"version": "1.0",
+	"name": "Chrome Ad Remover v2",
+	"description": "Chrome ad remover with tree scan",
+	"version": "2.0",
 	"manifest_version": 3,
 	"action": {
 		"default_popup": "ui/extension_ui.html",
-		"default_icon": "ui/chrome_ad_remover_v1_icon.png"
+		"default_icon": {
+			"128" : "ui/chrome_ad_remover_v1_icon.png"
+			}
 	},
 	"permissions": [
 	"storage"
@@ -16,7 +18,7 @@
       "js": [
 		"content/util.js",
 		"content/generator.js",
-		"content/cabmutationobserver.js",
+		"content/cabdomscanner.js",
 		"content/sites/site.js",
 		"content/sites/halktv/halktv_main.js",
 		"content/sites/halktv/halktv.js",
@@ -33,7 +35,7 @@
       "js": [
 		"content/util.js",
 		"content/generator.js",
-		"content/cabmutationobserver.js",
+		"content/cabdomscanner.js",
 		"content/sites/site.js",
 		"content/sites/cumhuriyet/cumhuriyet_main.js",
 		"content/sites/cumhuriyet/cumhuriyet.js",
@@ -50,7 +52,7 @@
       "js": [
 		"content/util.js",
 		"content/generator.js",
-		"content/cabmutationobserver.js",
+		"content/cabdomscanner.js",
 		"content/sites/site.js",
 		"content/sites/sozcu/sozcu_main.js",
 		"content/sites/sozcu/sozcu.js",
@@ -67,7 +69,7 @@
       "js": [
 		"content/util.js",
 		"content/generator.js",
-		"content/cabmutationobserver.js",
+		"content/cabdomscanner.js",
 		"content/sites/site.js",
 		"content/sites/onedio/onedio_main.js",
 		"content/sites/onedio/onedio.js",
@@ -84,7 +86,7 @@
       "js": [
 		"content/util.js",
 		"content/generator.js",
-		"content/cabmutationobserver.js",
+		"content/cabdomscanner.js",
 		"content/sites/site.js",
 		"content/sites/buzzfeed/buzzfeed_main.js",
 		"content/sites/buzzfeed/buzzfeed.js",
@@ -101,7 +103,7 @@
       "js": [
 		"content/util.js",
 		"content/generator.js",
-		"content/cabmutationobserver.js",
+		"content/cabdomscanner.js",
 		"content/sites/site.js",
 		"content/sites/donanimhaber/donanimhaber_main.js",
 		"content/sites/donanimhaber/donanimhaber.js",
@@ -110,6 +112,32 @@
       "matches": [
 		"http://*.donanimhaber.com/*",
 		"https://*.donanimhaber.com/*"
+      ],
+	  "run_at": "document_start"
+    },
+	
+	{
+      "js": [
+		"content/util.js",
+		"content/generator.js",
+		"content/cabdomscanner.js",
+		"content/sites/site.js",
+		"content/sites/bloomberght/bloomberght_main.js",
+		"content/sites/bloomberght/bloomberght.js",
+		"content/content.js"
+		],
+      "matches": [
+		"http://*.bloomberg.com/*",
+		"https://*.bloomberg.com/*",
+		"http://*.bloomberght.com/*",
+		"https://*.bloomberght.com/*",
+		"http://*.bloomberghtradyo.com/*",
+		"https://*.bloomberghtradyo.com/*",
+		"http://*.businessweek.com/*",
+		"https://*.businessweek.com/*",
+		"http://*.businessweek.com.tr/*",
+		"https://*.businessweek.com.tr/*"
+		
       ],
 	  "run_at": "document_start"
     }

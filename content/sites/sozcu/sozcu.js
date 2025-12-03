@@ -2,7 +2,7 @@ class SiteSozcu extends Site{
 	
 	constructor(){
 		super(
-			"sozcu.com", 
+			["sozcu.com"], 
 			["ad masthead", "content-inner-ad", "ad ad-cols", "ima-ad-container", "nts-float-container", "google_ads_iframe", "adform", "ad news-card", "ad-box", "taboola-feed", "taboola-article-feed"],
 			["id", "class"],
 			["iframe", "cmh-ads", "tagon-div", "ins"],

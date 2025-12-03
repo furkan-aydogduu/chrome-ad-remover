@@ -2,7 +2,7 @@ class SiteCumhuriyet extends Site{
 	
 	constructor(){
 		super(
-			"cumhuriyet.com", 
+			["cumhuriyet.com"], 
 			["cmh-interstitial", "adssticky", "floating-ads", "cum-taboola", "_ima-ad-container", "vjs-poster", "vjs-big-play-button"],
 			["id", "class"],
 			["ins", "iframe", "cmh-ads", "tagon-div"]
