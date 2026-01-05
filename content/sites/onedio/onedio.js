@@ -6,7 +6,7 @@ class SiteOnedio extends Site{
 			[
 			"icerikyanispontop-container", "icerikyanitop-container", "kategoriyanitop","gpt-desktop-icerik", "gpt-desktop-kategori", "google_ads_iframe", "article__oads", 
 			"type-e", "type-w", "teads", "mdznads", "philips-popup", "onedio-ps-container", "qnb-zeka-q-mh", "okey", "yuzdeyuzmuzik-main-container", "zergo", "gpt-ad-", 
-			"masthead", "slidernativeads", "now-", "now bg", "_ima-ad-container", "sliderNativeAds", "floorcare-main-container"
+			"masthead", "slidernativeads", "now-", "now bg", "_ima-ad-container", "sliderNativeAds", "floorcare-main-container", "rebul", "-skipAd"
 			],
 			
 			["id", "class"],
@@ -40,6 +40,18 @@ class SiteOnedio extends Site{
 			if(exists(node.parentNode)){
 				hide(node.parentNode.parentNode);
 			}
+		}
+		
+		else if(nodeAttributeExistsWithIdentity(node, "class", "-skipAd")){
+			hide(node.parentNode);
+		}
+		
+		if(nodeAttributeExistsWithIdentity(node, "class", "_ima-ad-container")){
+			node.remove();
+		}
+		
+		if(nodeAttributeExistsWithIdentity(node, "class", "vjs-control-bar")){
+			node.attributes['class'].nodeValue = "vjs-control-bar";
 		}
 	}
 	

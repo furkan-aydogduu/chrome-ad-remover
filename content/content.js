@@ -1,6 +1,6 @@
 var extensionSettings = {};
 var siteContainer = [];
-var websiteScanInterval = 500; //ms
+var websiteScanInterval = 300; //ms
 
 runExtension();
 
@@ -69,8 +69,10 @@ function getCurrentSiteConfig(){
 function scanDOM(node, siteConfig){
 
 	if(extensionSettings.cabEnabled){
-		traverseNodeAndHideAds(node, siteConfig);
-		siteConfig.callback();
+		if(exists(chrome.runtime) && exists(chrome.runtime.id)){
+			siteConfig.callback();
+			traverseNodeAndHideAds(node, siteConfig);
+		}
 	}
 	else{
 		this.disconnect();
@@ -167,6 +169,10 @@ function traverseNodeAndHideAds(node, siteConfig){
 		if(exists(curNode)){
 			if(curNode instanceof Node){
 				
+				if(exists(siteConfig.nodeCallback) && typeof siteConfig.nodeCallback === 'function'){
+					siteConfig.nodeCallback(curNode);
+				}
+				
 				var anyClearOperationPerformed = 0;
 				
 				if(!isToBeExcluded(curNode, siteConfig)){
@@ -182,20 +188,10 @@ function traverseNodeAndHideAds(node, siteConfig){
 					for(let j = 0; j < curNode.childNodes.length; j++){
 						nodeQueue.push(curNode.childNodes.item(j));
 					}
-					
-					if(curNode instanceof HTMLElement){
-						if(exists(chrome.runtime) && exists(chrome.runtime.id)){
-							var shadowRootOfTheNode = chrome.dom.openOrClosedShadowRoot(curNode);
-						
-							if(exists(shadowRootOfTheNode) && shadowRootOfTheNode instanceof Node){
-								nodeQueue.push(shadowRootOfTheNode);
-							}
-						}						
-					}
-				}
-				
-				if(exists(siteConfig.nodeCallback) && typeof siteConfig.nodeCallback === 'function'){
-					siteConfig.nodeCallback(curNode);
+										
+					if(exists(curNode.shadowRoot) && curNode.shadowRoot instanceof Node){
+						nodeQueue.push(curNode.shadowRoot);
+					}					
 				}
 			}
 		}

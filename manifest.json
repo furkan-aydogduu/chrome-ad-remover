@@ -3,10 +3,11 @@
 	"description": "Chrome ad remover with tree scan",
 	"version": "2.0",
 	"manifest_version": 3,
+	
 	"action": {
 		"default_popup": "ui/extension_ui.html",
 		"default_icon": {
-			"128" : "ui/chrome_ad_remover_v1_icon.png"
+			"128" : "ui/chrome_ad_remover_icon.png"
 			}
 	},
 	"permissions": [
@@ -25,8 +26,7 @@
 		"content/content.js"
 		],
       "matches": [
-        "http://*.halktv.com.tr/*",
-		"https://*.halktv.com.tr/*"
+        "*://*.halktv.com.tr/*"
       ],
 	  "run_at": "document_start"
     },
@@ -42,8 +42,7 @@
 		"content/content.js"
 		],
       "matches": [
-        "http://*.cumhuriyet.com.tr/*",
-		"https://*.cumhuriyet.com.tr/*"
+        "*://*.cumhuriyet.com.tr/*"
       ],
 	  "run_at": "document_start"
     },
@@ -58,9 +57,9 @@
 		"content/sites/sozcu/sozcu.js",
 		"content/content.js"
 		],
+		
       "matches": [
-        "http://*.sozcu.com.tr/*",
-		"https://*.sozcu.com.tr/*"
+        "*://*.sozcu.com.tr/*"
       ],
 	  "run_at": "document_start"
     },
@@ -76,8 +75,7 @@
 		"content/content.js"
 		],
       "matches": [
-        "http://*.onedio.com/*",
-		"https://*.onedio.com/*"
+        "*://*.onedio.com/*"
       ],
 	  "run_at": "document_start"
     },
@@ -93,8 +91,7 @@
 		"content/content.js"
 		],
       "matches": [
-        "http://*.buzzfeed.com/*",
-		"https://*.buzzfeed.com/*"
+        "*://*.buzzfeed.com/*"
       ],
 	  "run_at": "document_start"
     },
@@ -110,8 +107,7 @@
 		"content/content.js"
 		],
       "matches": [
-		"http://*.donanimhaber.com/*",
-		"https://*.donanimhaber.com/*"
+		"*://*.donanimhaber.com/*"
       ],
 	  "run_at": "document_start"
     },
@@ -127,17 +123,11 @@
 		"content/content.js"
 		],
       "matches": [
-		"http://*.bloomberg.com/*",
-		"https://*.bloomberg.com/*",
-		"http://*.bloomberght.com/*",
-		"https://*.bloomberght.com/*",
-		"http://*.bloomberghtradyo.com/*",
-		"https://*.bloomberghtradyo.com/*",
-		"http://*.businessweek.com/*",
-		"https://*.businessweek.com/*",
-		"http://*.businessweek.com.tr/*",
-		"https://*.businessweek.com.tr/*"
-		
+		"*://*.bloomberg.com/*",
+		"*://*.bloomberght.com/*",
+		"*://*.bloomberghtradyo.com/*",
+		"*://*.businessweek.com/*",
+		"*://*.businessweek.com.tr/*"
       ],
 	  "run_at": "document_start"
     }

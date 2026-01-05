@@ -5,7 +5,12 @@ class SiteHalktv extends Site {
 			["halktv.com"], 
 			["membrana_tr_interstitial", "ad_unit", "theads-interstitial", "ima-ad-container", "nts-float-container", "rmp-ad-container", "type-e", "type-w", "banner-masthead"],
 			["id", "class"],
-			["ins", "dfp-ad", "iframe"]
+			["ins", "dfp-ad", "iframe"],
+			[
+				{	"node" : "iframe",
+					"src" : "youtube.com/"
+				}
+			]
 		);
 	}
 	
